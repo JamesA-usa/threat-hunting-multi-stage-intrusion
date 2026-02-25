@@ -292,7 +292,7 @@ table 14
 
 ### 15. Searched the `DeviceEvents` Table
 
-At `2026-01-15T05:07:42Z` on as-pc1, a .NET assembly was loaded into notepad.exe without a corresponding backing file on disk, as indicated by a ClrUnbackedModuleLoaded event. This behavior is consistent with in-memory execution of credential theft tooling, suggesting potential malicious code injection into a legitimate process for stealth.
+At `2026-01-15T05:09:53Z` on as-pc1, a .NET assembly was loaded into notepad.exe without a corresponding backing file on disk, as indicated by a ClrUnbackedModuleLoaded event. This behavior is consistent with in-memory execution of credential theft tooling, suggesting potential malicious code injection into a legitimate process for stealth.
 
 **Query used to locate events:**
 
@@ -308,8 +308,18 @@ DeviceEvents
 table 15
 
 
+### 16. Searched the `DeviceProcessEvents` Table
 
+At `2026-01-27T22:17:40Z` on as-srv, the account as.srv.administrator executed net.exe view \\10.1.0.154 to enumerate available network shares on the remote host. This command is commonly used during reconnaissance to identify accessible shared resources for potential lateral movement or data discovery.
 
+**Query used to locate events:**
 
-
-### 16. Searched the `DeviceNetworkEvents` Table
+```kql
+DeviceProcessEvents
+| where Timestamp > ago(60d)
+| where DeviceName has "as-"
+| where ProcessCommandLine has "view \\"
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessSHA256
+| order by Timestamp desc
+```
+table 16
