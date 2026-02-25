@@ -20,6 +20,7 @@ An employee on device AS-PC1 executed a file that appeared to be a legitimate PD
    - DeviceNetworkEvents
 #
 - **Discover Lateral Movement & Persistence Indicators**: Hunt for remote authentication events (RDP, SMB, PsExec), failed and successful logons, account modifications, scheduled task creation, service installs, and privilege escalation commands. Capture newly created accounts, modified Administrator status, task names, service names, and remote session origins as secondary IoCs.
+#
 - **Detect Staging, Exfiltration & Defense Evasion**: Investigate archive creation, large file compression, network share enumeration, abnormal outbound traffic, log clearing (wevtutil), and in-memory module execution events.
 
 ---
