@@ -15,7 +15,7 @@ A multi-stage intrusion starting with execution of a masqueraded PDF executable 
 
 ### 1. Searched the `DeviceNetworkEvents` Table
 
-The payload established outbound connections using domain `cdn.cloud-endpoint.net` for command and control (C2). The process responsible for the C2 traffic was `daniel_richardson_cv.pdf.exe`.
+At `2026-01-15T03:47:10Z`, the payload established outbound connections using domain `cdn.cloud-endpoint.net` for command and control (C2). The process responsible for the C2 traffic was `daniel_richardson_cv.pdf.exe`.
 
 **Query used to locate events:**
 
@@ -30,4 +30,29 @@ DeviceNetworkEvents
 <img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%201.png">
 
 
-Daniel_Richardson_CV.pdf.exe started started the infection chain for any file that had the string "tor" in it and discovered what looks like the user "labuser" downloaded a TOR installer, did something that resulted in many TOR-related files being copied to the desktop, and the creation of a file called `tor-shopping-list.txt` on the desktop at `2026-02-02 19:43:52Z`. These events began at `2026-02-02 19:41:20Z`.
+## To be edited
+
+### 2. Searched the `DeviceNetworkEvents` Table
+
+At `2026-01-15T03:53:09Z`,
+
+Reflective/in-memory load observed (ClrUnbackedModuleLoaded)
+
+
+### 3. Searched the `DeviceNetworkEvents` Table
+
+At `2026-01-15T03:58:55Z`,
+
+### 4. Searched the `DeviceNetworkEvents` Table
+
+### 4. Searched the `DeviceNetworkEvents` Table
+
+### 4. Searched the `DeviceNetworkEvents` Table
+
+### 4. Searched the `DeviceNetworkEvents` Table
+
+### 4. Searched the `DeviceNetworkEvents` Table
+
+### 4. Searched the `DeviceNetworkEvents` Table
+
+### 4. Searched the `DeviceNetworkEvents` Table
