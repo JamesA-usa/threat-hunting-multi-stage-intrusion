@@ -12,7 +12,13 @@
 A multi-stage intrusion starting with execution of a masqueraded PDF executable (Daniel_Richardson_CV.pdf.exe) on AS-PC1. The payload performed host reconnaissance, established outbound C2 communications to cloud-endpoint.net infrastructure, and used in-memory .NET loading (ClrUnbackedModuleLoaded) consistent with fileless post-exploitation tooling. The actor deployed AnyDesk for persistence, attempted multiple lateral movement methods (WMIC/PsExec), then pivoted successfully using RDP (mstsc.exe) to AS-PC2 and accessed sensitive payroll files on AS-SRV. Data was staged into a 7-Zip archive (Shares.7z) and the attacker performed anti-forensics via wevtutil log clearing.
 
 ### High-Level Intrusion IoC Discovery Plan
-
+- Identify Initial Compromise & Execution Artifacts: Search for abnormal process execution, suspicious file hashes, disguised executables, unusual outbound connections, and command-line anomalies using the following tabls:
+   - DeviceProcessEvents
+   - DeviceFileEvents
+   - DeviceEvents
+   - DeviceNetworkEvents
+- Discover Lateral Movement & Persistence Indicators: Hunt for remote authentication events (RDP, SMB, PsExec), failed and successful logons, account modifications, scheduled task creation, service installs, and privilege escalation commands. Capture newly created accounts, modified Administrator status, task names, service names, and remote session origins as secondary IoCs.
+- Detect Staging, Exfiltration & Defense Evasion: Investigate archive creation, large file compression, network share enumeration, abnormal outbound traffic, log clearing (wevtutil), and in-memory module execution events.
 
 ---
 
