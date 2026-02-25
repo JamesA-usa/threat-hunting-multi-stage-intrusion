@@ -27,7 +27,7 @@ DeviceNetworkEvents
 | where isnotempty(RemoteUrl)
 | project TimeGenerated, DeviceName, InitiatingProcessAccountName, ActionType, RemoteUrl, InitiatingProcessCommandLine, InitiatingProcessSHA256
 ```
-<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-scenario-tor/blob/main/1-DeviceFileEvents.jpg">
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%201.png">
 
 
 Daniel_Richardson_CV.pdf.exe started started the infection chain for any file that had the string "tor" in it and discovered what looks like the user "labuser" downloaded a TOR installer, did something that resulted in many TOR-related files being copied to the desktop, and the creation of a file called `tor-shopping-list.txt` on the desktop at `2026-02-02 19:43:52Z`. These events began at `2026-02-02 19:41:20Z`.
