@@ -13,9 +13,6 @@ A multi-stage intrusion starting with execution of a masqueraded PDF executable 
 
 ### High-Level Intrusion IoC Discovery Plan
 
-- **Check `DeviceFileEvents`** for any `tor(.exe)` or `firefox(.exe)` file events.
-- **Check `DeviceProcessEvents`** for any signs of installation or usage.
-- **Check `DeviceNetworkEvents`** for any signs of outgoing connections over known TOR ports.
 
 ---
 
