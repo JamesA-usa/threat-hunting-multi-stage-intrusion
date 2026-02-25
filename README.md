@@ -45,10 +45,8 @@ DeviceEvents
 | project TimeGenerated, DeviceName, InitiatingProcessAccountName, InitiatingProcessCommandLine, InitiatingProcessSHA256
 ```
 
-Image here for table 2
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%202.png">
 
-
-## To be edited
 
 ### 3. Searched the `DeviceProcessEvents` Table
 
@@ -70,7 +68,8 @@ DeviceProcessEvents
 | project Timestamp, DeviceName, AccountName, FileName, InitiatingProcessCommandLine, InitiatingProcessSHA256
 ```
 
-image for table 3 here
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%203.png">
+
 
 ### 4. Searched the `DeviceFileEvents` Table
 
@@ -87,9 +86,7 @@ DeviceFileEvents
 | project TimeGenerated, DeviceName, InitiatingProcessAccountName, InitiatingProcessCommandLine, InitiatingProcessSHA256
 ```
 
-image for table 4 here
-
-
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%204.png">
 
 
 ### 5. Searched the `DeviceProcessEvents` Table
@@ -108,9 +105,7 @@ DeviceProcessEvents
 | project TimeGenerated, DeviceName, InitiatingProcessAccountName, InitiatingProcessCommandLine, InitiatingProcessSHA256
 ```
 
-image for table 5 here
-
-
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%205.png">
 
 
 ### 6. Searched the `DeviceProcessEvents` Table
@@ -130,7 +125,7 @@ DeviceProcessEvents
 | project TimeGenerated, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessSHA256
 ```
 
-image for table 6
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%206.png">
 
 
 
