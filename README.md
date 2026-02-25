@@ -195,17 +195,121 @@ DeviceFileEvents
 <img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%209.png">
 
 
-### 10. Searched the `DeviceNetworkEvents` Table
+### 10. Searched the `DeviceProcessEvents` Table
+
+At `2026-01-15T04:52:32Z`, the account david.mitchell created a scheduled task named “MicrosoftEdgeUpdateCheck” that is configured to run C:\Users\Public\RuntimeBroker.exe daily at 3:00 AM with the highest privileges. This establishes persistence by automatically executing that program — likely a disguised or malicious binary—on a recurring schedule.
+
+**Query used to locate events:**
+
+```kql
+DeviceProcessEvents
+| where Timestamp > ago(60d)
+| where DeviceName == "as-pc2" 
+| where FileName =~ "schtasks.exe"
+| where ProcessCommandLine has "/create"
+| order by Timestamp desc
+| project Timestamp, DeviceName, AccountName, ProcessCommandLine, InitiatingProcessParentFileName, InitiatingProcessSHA256
+```
+
+table 10 here
 
 
-### 11. Searched the `DeviceNetworkEvents` Table
 
-### 12. Searched the `DeviceNetworkEvents` Table
+### 11. Searched the `DeviceProcessEvents` Table
 
-### 13. Searched the `DeviceNetworkEvents` Table
+At `2026-01-15T04:54:55Z`, the system AS-PC2 initiated a Remote Desktop connection using mstsc.exe to the host 10.1.0.203. The presence of InitiatingProcessRemoteSessionDeviceName=AS-PC1 indicates the session originated from AS-PC1, representing successful lateral movement via RDP.
 
-### 14. Searched the `DeviceNetworkEvents` Table
+**Query used to locate events:**
 
-### 15. Searched the `DeviceNetworkEvents` Table
+```kql
+DeviceProcessEvents
+| where Timestamp > ago(60d)
+| where InitiatingProcessRemoteSessionDeviceName == "AS-PC1"
+| where FileName == "mstsc.exe"
+| order by Timestamp desc
+| project TimeGenerated, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessSHA256
+```
+
+table 11
+
+
+### 12. Searched the `DeviceProcessEvents` Table
+
+At `2026-01-15T04:57:50Z` on as-pc1, the command net.exe localgroup Administrators svc_backup /add was executed, adding the account svc_backup to the local Administrators group. This action grants elevated privileges to that account and is consistent with establishing persistence or creating a backdoor for continued administrative access.
+
+**Query used to locate events:**
+
+```kql
+DeviceProcessEvents
+| where Timestamp > ago(60d)
+| where DeviceName == "as-pc1"
+| where InitiatingProcessCommandLine contains "/add"
+| where InitiatingProcessCommandLine contains "administrator"
+| project TimeGenerated, DeviceName, AccountName, InitiatingProcessCommandLine, InitiatingProcessSHA256
+```
+
+table 12
+
+
+
+### 13. Searched the `DeviceFileEvents` Table
+
+At `2026-01-15T04:59:04Z` on as-srv, a compressed archive named Shares.7z was created, indicating data was packaged for staging or potential exfiltration. The associated SHA256 hash confirms the specific file instance, supporting evidence of possible data collection and preparation for transfer.
+
+**Query used to locate events:**
+
+```kql
+DeviceFileEvents
+| where TimeGenerated > ago(60d)
+| where DeviceName == "as-srv"
+| where FileName matches regex @"\.(zip|7z)$"
+| where FileName != "VMAgentLogs.zip"
+//7zG.exe means the GUI for this tool was opened to create the 7z file
+| where InitiatingProcessCommandLine contains "7zG.exe"
+| order by Timestamp desc
+| project TimeGenerated, DeviceName, InitiatingProcessAccountName, InitiatingProcessCommandLine, InitiatingProcessSHA256
+```
+
+table 13
+
+
+### 14. Searched the `DeviceProcessEvents` Table
+
+At `2026-01-15T05:07:42Z` on as-srv, the command wevtutil.exe cl Security and the command wevtutil.exe cl System were executed to clear the Windows Security event log. This action removes audit records and is commonly associated with defense evasion to conceal malicious activity.
+
+**Query used to locate events:**
+
+```kql
+DeviceProcessEvents
+| where Timestamp between (datetime(2026-01-15 00:00:00) .. datetime(2026-01-15 23:59:59))
+| where DeviceName == "as-srv"
+| where ProcessCommandLine has "cl"
+| order by Timestamp desc
+| project Timestamp, DeviceName, AccountName, ProcessCommandLine, InitiatingProcessSHA256
+```
+
+table 14
+
+### 15. Searched the `DeviceEvents` Table
+
+At `2026-01-15T05:07:42Z` on as-pc1, a .NET assembly was loaded into notepad.exe without a corresponding backing file on disk, as indicated by a ClrUnbackedModuleLoaded event. This behavior is consistent with in-memory execution of credential theft tooling, suggesting potential malicious code injection into a legitimate process for stealth.
+
+**Query used to locate events:**
+
+```kql
+DeviceEvents
+| where TimeGenerated > ago(60d)
+| where DeviceName has "as-"
+| where ActionType == "ClrUnbackedModuleLoaded"
+| where InitiatingProcessFileName =~ "notepad.exe"
+| order by Timestamp desc
+| project TimeGenerated, DeviceName, InitiatingProcessAccountName, ActionType, InitiatingProcessFileName, InitiatingProcessSHA256
+```
+table 15
+
+
+
+
+
 
 ### 16. Searched the `DeviceNetworkEvents` Table
