@@ -145,7 +145,7 @@ DeviceLogonEvents
 | project TimeGenerated, DeviceName, AccountName, ActionType, RemoteDeviceName, InitiatingProcessCommandLine, InitiatingProcessSHA256
 ```
 
-<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%207.png">
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/table%207.png">
 
 
 
@@ -165,7 +165,7 @@ DeviceProcessEvents
 | order by Timestamp desc
 ```
 
-<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%208.png">
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/table%208.png">
 
 
 
