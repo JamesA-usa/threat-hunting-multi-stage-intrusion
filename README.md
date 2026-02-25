@@ -26,8 +26,10 @@ An employee on device AS-PC1 executed a file that appeared to be a legitimate PD
 ## Steps Taken
 
 ### 1. Searched the `DeviceNetworkEvents` Table
-
-At `2026-01-15T03:47:10Z`, the payload established outbound connections using domain `cdn.cloud-endpoint.net` for command and control (C2). The process responsible for the C2 traffic was `daniel_richardson_cv.pdf.exe`.
+-**Timestamp:** `2026-01-15T03:47:10Z`
+-**Event:** The file `daniel_richardson_cv.pdf.exe` was executed by an employee and subsequently established outbound communication with `cdn.cloud-endpoint.net`, consistent with command-and-control (C2) activity.
+-**Action:** Malicious payload deployed.
+-**File Path:** c:\users\sophie.turner\downloads\daniel_richardson_cv\daniel_richardson_cv.pdf.exe
 
 **Query used to locate events:**
 
@@ -37,7 +39,7 @@ DeviceNetworkEvents
 | where InitiatingProcessFileName =~ "Daniel_Richardson_CV.pdf.exe"
 | where InitiatingProcessSHA256 == "48b97fd91946e81e3e7742b3554585360551551cbf9398e1f34f4bc4eac3a6b5"
 | where isnotempty(RemoteUrl)
-| project TimeGenerated, DeviceName, InitiatingProcessAccountName, ActionType, RemoteUrl, InitiatingProcessCommandLine, InitiatingProcessSHA256
+| project TimeGenerated, DeviceName, InitiatingProcessAccountName, ActionType, RemoteUrl, InitiatingProcessFolderPath, InitiatingProcessSHA256
 ```
 <img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%201.png">
 
