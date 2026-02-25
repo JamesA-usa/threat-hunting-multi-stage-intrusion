@@ -17,17 +17,17 @@ A multi-stage intrusion starting with execution of a masqueraded PDF executable 
 
 ### 1. Searched the `DeviceNetworkEvents` Table
 
-The payload established outbound connections using domain 'cdn.cloud-endpoint.net' for command and control.
+The payload established outbound connections using domain `cdn.cloud-endpoint.net` for command and control (C2). The process responsible for the C2 traffic was `daniel_richardson_cv.pdf.exe`.
 
 **Query used to locate events:**
 
 ```kql
-DeviceFileEvents
-| where DeviceName == "wale-threat-hun"
-| where InitiatingProcessAccountName == "labuser"
-| where FileName startswith "tor"
-| project Timestamp, DeviceName, ActionType, FileName, FolderPath, SHA256, Account = InitiatingProcessAccountName
-| order by Timestamp desc
+DeviceNetworkEvents
+| where TimeGenerated > ago(60d)
+| where InitiatingProcessFileName =~ "Daniel_Richardson_CV.pdf.exe"
+| where InitiatingProcessSHA256 == "48b97fd91946e81e3e7742b3554585360551551cbf9398e1f34f4bc4eac3a6b5"
+| where isnotempty(RemoteUrl)
+| project TimeGenerated, DeviceName, InitiatingProcessAccountName, ActionType, RemoteUrl, InitiatingProcessCommandLine, InitiatingProcessSHA256
 ```
 <img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-scenario-tor/blob/main/1-DeviceFileEvents.jpg">
 
