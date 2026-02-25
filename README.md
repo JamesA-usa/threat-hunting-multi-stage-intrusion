@@ -211,8 +211,7 @@ DeviceProcessEvents
 | project Timestamp, DeviceName, AccountName, ProcessCommandLine, InitiatingProcessParentFileName, InitiatingProcessSHA256
 ```
 
-table 10 here
-
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/table%2010.png">
 
 
 ### 11. Searched the `DeviceProcessEvents` Table
@@ -230,7 +229,7 @@ DeviceProcessEvents
 | project TimeGenerated, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessSHA256
 ```
 
-table 11
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/table%2011.png">
 
 
 ### 12. Searched the `DeviceProcessEvents` Table
@@ -248,7 +247,7 @@ DeviceProcessEvents
 | project TimeGenerated, DeviceName, AccountName, InitiatingProcessCommandLine, InitiatingProcessSHA256
 ```
 
-table 12
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/table%2012.png">
 
 
 
@@ -270,7 +269,7 @@ DeviceFileEvents
 | project TimeGenerated, DeviceName, InitiatingProcessAccountName, InitiatingProcessCommandLine, InitiatingProcessSHA256
 ```
 
-table 13
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/table%2013.png">
 
 
 ### 14. Searched the `DeviceProcessEvents` Table
@@ -288,7 +287,7 @@ DeviceProcessEvents
 | project Timestamp, DeviceName, AccountName, ProcessCommandLine, InitiatingProcessSHA256
 ```
 
-table 14
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/table%2014.png">
 
 ### 15. Searched the `DeviceEvents` Table
 
@@ -305,7 +304,7 @@ DeviceEvents
 | order by Timestamp desc
 | project TimeGenerated, DeviceName, InitiatingProcessAccountName, ActionType, InitiatingProcessFileName, InitiatingProcessSHA256
 ```
-table 15
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/table%2015.png">
 
 
 ### 16. Searched the `DeviceProcessEvents` Table
@@ -322,4 +321,4 @@ DeviceProcessEvents
 | project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessSHA256
 | order by Timestamp desc
 ```
-table 16
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/table%2016.png">
