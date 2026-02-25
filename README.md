@@ -42,7 +42,7 @@ DeviceNetworkEvents
 | where isnotempty(RemoteUrl)
 | project TimeGenerated, DeviceName, InitiatingProcessAccountName, ActionType, RemoteUrl, InitiatingProcessFolderPath, InitiatingProcessSHA256
 ```
-<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%201.png">
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/t1.png">
 
 
 ### 2. Searched the `DeviceEvents` Table
