@@ -129,9 +129,46 @@ DeviceProcessEvents
 
 
 
-### 4. Searched the `DeviceNetworkEvents` Table
+### 7. Searched the `DeviceLogonEvents` Table
 
-### 4. Searched the `DeviceNetworkEvents` Table
+At `2026-01-15T04:39:57Z`, a login to AS-PC2 was successfull using the username david.mitchell.
+
+**Query used to locate events:**
+
+```kql
+DeviceLogonEvents
+| where DeviceName == "as-pc2"
+| where AccountDomain == "as-pc2"
+| where ActionType == "LogonSuccess"
+| where Timestamp > ago(60d)
+| order by Timestamp desc
+| project TimeGenerated, DeviceName, AccountName, ActionType, RemoteDeviceName, InitiatingProcessCommandLine, InitiatingProcessSHA256
+```
+
+table 7 here
+
+
+
+### 8. Searched the `DeviceProcessEvents` Table
+
+At `2026-01-15T04:40:31Z` on AS-PC2, the account david.mitchell executed net.exe user Administrator /active:yes, enabling the built-in local Administrator account. This action is consistent with privilege escalation and potential persistence techniques.
+
+**Query used to locate events:**
+
+```kql
+DeviceProcessEvents
+| where Timestamp > ago(60d)
+| where DeviceName == "as-pc2"
+| where FileName =~ "net.exe"
+| where AccountName == "david.mitchell"
+| project Timestamp, DeviceName, AccountName, ProcessCommandLine
+| order by Timestamp desc
+```
+
+table 8 here
+
+
+
 
 ### 4. Searched the `DeviceNetworkEvents` Table
 
