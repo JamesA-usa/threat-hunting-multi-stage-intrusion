@@ -145,7 +145,7 @@ DeviceLogonEvents
 | project TimeGenerated, DeviceName, AccountName, ActionType, RemoteDeviceName, InitiatingProcessCommandLine, InitiatingProcessSHA256
 ```
 
-table 7 here
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%207.png">
 
 
 
@@ -165,11 +165,47 @@ DeviceProcessEvents
 | order by Timestamp desc
 ```
 
-table 8 here
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%208.png">
 
 
 
 
-### 4. Searched the `DeviceNetworkEvents` Table
+### 9. Searched the `DeviceFileEvents` Table
 
-### 4. Searched the `DeviceNetworkEvents` Table
+At `2026-01-15T04:43:52Z`, sensitive file BACS_Payments_Dec2025.ods was accessed on AS-SRV.
+
+**Query used to locate events:**
+
+```kql
+DeviceFileEvents
+| where TimeGenerated > ago(60d)
+| where DeviceName has "as-"
+| where FileName has_any (
+    ".doc",".docx",".xls",".xlsx",".ppt",".pptx",
+    ".pdf",".csv",".txt",".rtf",
+    ".json",".yaml",".yml",
+    ".sql",".bak",".ods", ".lnk"
+)
+| where FileName contains "BACS"
+| where InitiatingProcessAccountName != "system"
+| order by Timestamp desc
+| project TimeGenerated, DeviceName, InitiatingProcessAccountName, FileName, InitiatingProcessSHA256
+```
+
+<img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/Table%209.png">
+
+
+### 10. Searched the `DeviceNetworkEvents` Table
+
+
+### 11. Searched the `DeviceNetworkEvents` Table
+
+### 12. Searched the `DeviceNetworkEvents` Table
+
+### 13. Searched the `DeviceNetworkEvents` Table
+
+### 14. Searched the `DeviceNetworkEvents` Table
+
+### 15. Searched the `DeviceNetworkEvents` Table
+
+### 16. Searched the `DeviceNetworkEvents` Table
