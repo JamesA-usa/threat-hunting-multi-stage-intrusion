@@ -1,4 +1,4 @@
-<img width="400" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/threat%20hunt%20pdf.png" 
+<img width="400" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/threat%20hunt%20pdf.png"> 
 
 # Threat Hunt Report: PDF Executable -> Multi-Stage Intrusion
 
