@@ -1,5 +1,3 @@
-# Threat Hunt Report: PDF Executable -> Multi-Stage Intrusion
-
 <img src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/threat%20hunt%20pdf.png"> 
 
 ## Platforms and Languages Leveraged
