@@ -65,7 +65,7 @@ DeviceEvents
 
 ### 3. Searched the `DeviceProcessEvents` Table
 
-At `2026-01-15T03:58:55Z`, payload activity occured using Daniel_Richardson_CV.pdf.exe to conduct recon.
+At `2026-01-15T03:58:55Z`, payload activity occurred using Daniel_Richardson_CV.pdf.exe to conduct recon.
 
 **Query used to locate events:**
 
@@ -125,7 +125,7 @@ DeviceProcessEvents
 
 ### 6. Searched the `DeviceProcessEvents` Table
 
-At `2026-01-15T04:18:44Z`, failed remote execution atttempts began, using WMIC and PsExec, against AC-PC2 were observed. 
+At `2026-01-15T04:18:44Z` failed remote execution attempts began using WMIC and PsExec against AC-PC2 were observed. 
 
 **Query used to locate events:**
 
@@ -348,7 +348,7 @@ A multi-stage intrusion starting with execution of a masqueraded PDF executable 
 
 ## Response Taken
 
-A full forensic triage (memory capture, persistence review, scheduled tasks, AnyDesk removal, log forwarding validation) was conducted. Identified C2 domains and hashes were blocked and recorded to prevent re-compromise. AS-PC1, AS-PC2, and AS-SRV were isolated from the network to contain the instruion and credentials were reset for all impacted accounts, including Administrator, david.mitchell, sophie.turner, and svc_backup. The employee's manager was notified.
+A full forensic triage (memory capture, persistence review, scheduled tasks, AnyDesk removal, log forwarding validation) was conducted. Identified C2 domains and hashes were blocked and recorded to prevent re-compromise. AS-PC1, AS-PC2, and AS-SRV were isolated from the network to contain the intrusion and credentials were reset for all impacted accounts, including Administrator, david.mitchell, sophie.turner, and svc_backup. The employee's manager was notified.
 
 ---
 
