@@ -1,6 +1,6 @@
 <img src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/threat%20hunt%20pdf.png"> 
 
-## 🎯 MITRE ATT&CK – Simplified Phase View
+## 🎯 MITRE ATT&CK
 
 | Attack Phase | Technique | ID |
 |--------------|-----------|----|
