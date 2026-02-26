@@ -1,5 +1,26 @@
 <img src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/threat%20hunt%20pdf.png"> 
-<img src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/m.png"> 
+
+## 🎯 MITRE ATT&CK – Simplified Phase View
+
+| Attack Phase | Technique | ID |
+|--------------|-----------|----|
+| 🎣 Initial Access | Spearphishing Attachment | T1566.001 |
+| ▶️ Execution | User Execution | T1204.002 |
+| ▶️ Execution | PowerShell | T1059.001 |
+| 🔐 Persistence | Remote Access Software (AnyDesk) | T1219 |
+| 🔐 Persistence | Scheduled Task | T1053.005 |
+| 🔐 Persistence | Create Account | T1136.001 |
+| ⬆️ Privilege Escalation | Account Manipulation | T1098 |
+| 🕶️ Defense Evasion | Masquerading | T1036 |
+| 🕶️ Defense Evasion | Log Clearing | T1070.001 |
+| 🕶️ Defense Evasion | Obfuscated/Compressed Files | T1027 |
+| 🔑 Credential Access | OS Credential Dumping | T1003 |
+| 🔎 Discovery | System / Network / Account Discovery | T1082 / T1135 / T1087 |
+| 🔄 Lateral Movement | Remote Desktop Protocol (RDP) | T1021.001 |
+| 🔄 Lateral Movement | PsExec / WMIC | T1021.002 / T1047 |
+| 📦 Collection | Data from Network Share | T1039 |
+| 🚀 Exfiltration | Archive Collected Data | T1560.001 |
+
 
 ## Platforms and Languages Leveraged
 - Windows 11 Virtual Machines (Microsoft Azure)
