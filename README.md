@@ -337,3 +337,18 @@ DeviceProcessEvents
 | order by Timestamp desc
 ```
 <img width="1212" alt="image" src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/table%2016.png">
+
+---
+
+## Summary
+
+A multi-stage intrusion starting with execution of a masqueraded PDF executable (Daniel_Richardson_CV.pdf.exe) on AS-PC1. The payload performed host reconnaissance, established outbound C2 communications to cloud-endpoint.net infrastructure, and used in-memory .NET loading (ClrUnbackedModuleLoaded) consistent with fileless post-exploitation tooling. The actor deployed AnyDesk for persistence, attempted multiple lateral movement methods (WMIC/PsExec), then pivoted successfully using RDP (mstsc.exe) to AS-PC2 and accessed sensitive payroll files on AS-SRV. Data was staged into a 7-Zip archive (Shares.7z) and the attacker performed anti-forensics via wevtutil log clearing.
+
+---
+
+## Response Taken
+
+A full forensic triage (memory capture, persistence review, scheduled tasks, AnyDesk removal, log forwarding validation) was conducted. Identified C2 domains and hashes were blocked and recorded to prevent re-compromise. AS-PC1, AS-PC2, and AS-SRV were isolated from the network to contain the instruion and credentials were reset for all impacted accounts, including Administrator, david.mitchell, sophie.turner, and svc_backup. The employee's manager was notified.
+
+---
+
