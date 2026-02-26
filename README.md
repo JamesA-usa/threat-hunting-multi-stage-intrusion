@@ -27,10 +27,7 @@ An employee on device AS-PC1 executed a file that appeared to be a legitimate PD
 
 ### 1. Searched the `DeviceNetworkEvents` Table
 
-- **Timestamp:** `2026-01-15T03:47:10Z`
-- **Event:** The file `daniel_richardson_cv.pdf.exe` was executed by an employee and subsequently established outbound communication with `cdn.cloud-endpoint.net`, consistent with command-and-control (C2) activity.
-- **Action:** Malicious payload deployed.
-- **File Path:** c:\users\sophie.turner\downloads\daniel_richardson_cv\daniel_richardson_cv.pdf.exe
+At `2026-01-15T03:47:10Z`, an employee executed `daniel_richardson_cv.pdf.exe` which subsequently established outbound communication with `cdn.cloud-endpoint.net`, consistent with command-and-control (C2) activity.
 
 **Query used to locate events:**
 
