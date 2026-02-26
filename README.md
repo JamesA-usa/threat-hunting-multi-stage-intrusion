@@ -1,4 +1,5 @@
 <img src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/threat%20hunt%20pdf.png"> 
+<img src="https://github.com/JamesA-usa/threat-hunting-multi-stage-intrusion/blob/main/m.png"> 
 
 ## Platforms and Languages Leveraged
 - Windows 11 Virtual Machines (Microsoft Azure)
